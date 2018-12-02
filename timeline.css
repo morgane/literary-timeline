@@ -1,3 +1,55 @@
+h1 {
+  color: white;
+  font-size: 36px;
+  font-style: italic;
+  left: 50px;
+  position: fixed;
+  text-transform: lowercase;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.key {
+  left: 50px;
+  position: fixed;
+}
+
+h3 {
+  font-style: italic;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dot {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block;
+  height: 10px;
+  margin-right: 5px;
+  width: 10px;
+}
+
+.mesopotamia {
+  background-color: yellow;
+}
+
+.greece {
+  background-color: green;
+}
+
+.china {
+  background-color: red;
+}
+
+.india {
+  background-color: orange;
+}
+
 .axis {
   fill: #000;
   font-family: serif;
@@ -10,12 +62,6 @@
   stroke-width: 1;
   stroke: black;
 }
-
-/*
-.brush .extent {
-  fill: black;
-  fill-opacity: .1;
-}*/
 
 .chart {
   fill: #fff;

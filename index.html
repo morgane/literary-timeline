@@ -8,24 +8,31 @@
   </head>
 
   <body>
+    <h1>literary timeline</h1>
     <div id="timeline"></div>
+    <div class="key">
+      <h3>Key</h3>
+      <h4>Ancient</h4>
+      <ul>
+        <li><span class="dot india"></span>India (3000 BC — 322 BC)</li>
+        <li><span class="dot mesopotamia"></span>Mesopotamia (2900 BC — 539 BC)</li>
+        <li><span class="dot china"></span>China (2070 BC — 256 BC)</li>
+        <li><span class="dot greece"></span>Greece (1000 BC — 500 BC)</li>
+      </ul>
+    </div>
+
     <script>
         var domElement = "#timeline";
-        var sourceFile = "philosophers.csv";
+        var sourceFile = "books.csv";
 
         // Read in the data and construct the timeline
         d3.csv(sourceFile, function(dataset) {
-            timeline(domElement)
-                .data(dataset)
-                .band("mainBand", 0.82)
-                .xAxis("mainBand")
-                // .tooltips("mainBand")
-                .labels("mainBand")
-                // .band("naviBand", 0.08)
-                // .xAxis("naviBand")
-                // .labels("naviBand")
-                // .brush("naviBand", ["mainBand"])
-                .redraw();
+            timeline(domElement).data(dataset)
+                                .band("mainBand", 0.82)
+                                .xAxis("mainBand")
+                                // .tooltips("mainBand")
+                                .labels("mainBand")
+                                .redraw();
         });
 
     </script>

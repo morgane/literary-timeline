@@ -6,7 +6,7 @@ function timeline(domElement) {
   //
 
   // chart geometry
-  var margin = {top: 20, right: 20, bottom: 20, left: 20},
+  var margin = {top: 100, right: 20, bottom: 20, left: 20},
       outerWidth = 3000,
       outerHeight = 500,
       width = outerWidth - margin.left - margin.right,
@@ -53,18 +53,13 @@ function timeline(domElement) {
   timeline.data = function(items) {
     var tracks = [],
         yearMillis = 31622400000,
-        instantOffset = 500 * yearMillis;
+        instantOffset = 100 * yearMillis;
     data.items = items;
 
     function compareItems(item1, item2) {
       var result = item1.start - item2.start;
       if (result < 0) { return -1; }
-      if (result > 0) { return 1; }
-
-      result = item1.end - item2.end;
-      if (result < 0) { return -1; }
-      if (result > 0) { return 1; }
-      return 0;
+      if (result >= 0) { return 1; }
     }
 
     function calculateTracks(items) {
@@ -77,7 +72,7 @@ function timeline(domElement) {
           }
 
           item.track = track;
-          tracks[track] = item.end;
+          tracks[track] = item.start.getTime() + instantOffset;
         });
       }
 
@@ -87,19 +82,13 @@ function timeline(domElement) {
 
     data.items.forEach(function (item){
       item.start = parseDate(item.start);
-      if (item.end == "") {
-        item.end = new Date(item.start.getTime() + instantOffset);
         item.instant = true;
-      } else {
-        item.end = parseDate(item.end);
-        item.instant = false;
-      }
     });
 
     calculateTracks(data.items);
     data.nTracks = tracks.length;
     data.minDate = d3.min(data.items, function (d) { return d.start; });
-    data.maxDate = d3.max(data.items, function (d) { return d.end; });
+    data.maxDate = new Date(d3.max(data.items, function (d) { return d.start.getTime(); }) + instantOffset);
 
     return timeline;
   };
@@ -144,19 +133,7 @@ function timeline(domElement) {
                       .enter().append("svg")
                       .attr("y", function (d) { return band.yScale(d.track); })
                       .attr("height", band.itemHeight)
-                      .attr("class", function (d) { return d.instant ? "part instant" : "part interval";});
-
-    var intervals = d3.select("#band" + bandNum).selectAll(".interval");
-    intervals.append("rect")
-             .attr("width", "100%")
-             .attr("height", "100%")
-             .style("stroke", 'black')
-             .style("stroke-width", 1);
-    intervals.append("text")
-             .attr("class", "intervalLabel")
-             .attr("x", 10)
-             .attr("y", 17)
-             .text(function (d) { return d.label; });
+                      .attr("class", function (d) { return "part instant";});
 
     var instants = d3.select("#band" + bandNum).selectAll(".instant");
     instants.append("circle")
@@ -164,7 +141,7 @@ function timeline(domElement) {
             .attr("cy", band.itemHeight / 2)
             .attr("r", 5)
             .style("stroke", 'black')
-            .style("fill", "none")
+            .style("fill", function (d) {return colorCircle(d.location);})
             .style("stroke-width", 1);
     instants.append("text")
             .attr("class", "instantLabel")
@@ -180,7 +157,7 @@ function timeline(domElement) {
 
     band.redraw = function () {
       items.attr("x", function (d) { return band.xScale(d.start);})
-           .attr("width", function (d) { return band.xScale(d.end) - band.xScale(d.start); });
+           .attr("width", function (d) { return 200; });
       band.parts.forEach(function(part) { part.redraw(); })
     };
 
@@ -326,37 +303,6 @@ function timeline(domElement) {
 
   //----------------------------------------------------------------------
   //
-  // brush
-  //
-
-  // timeline.brush = function (bandName, targetNames) {
-  //   var band = bands[bandName];
-
-  //   var brush = d3.svg.brush()
-  //                     .x(band.xScale.range([0, band.w]))
-  //                     .on("brush", function() {
-  //                       var domain = brush.empty()
-  //                           ? band.xScale.domain()
-  //                           : brush.extent();
-  //                       targetNames.forEach(function(d) {
-  //                         bands[d].xScale.domain(domain);
-  //                         bands[d].redraw();
-  //                       });
-  //                     });
-
-  //   var xBrush = band.g.append("svg")
-  //                      .attr("class", "x brush")
-  //                      .call(brush);
-
-  //   xBrush.selectAll("rect")
-  //         .attr("y", 4)
-  //         .attr("height", band.h - 4);
-
-  //   return timeline;
-  // };
-
-  //----------------------------------------------------------------------
-  //
   // redraw
   //
 
@@ -370,6 +316,29 @@ function timeline(domElement) {
   //
   // Utility functions
   //
+
+  function colorCircle(location) {
+    var color = 'white';
+
+    switch(location) {
+      case 'mesopotamia':
+        color = 'yellow'
+        break;
+      case 'greece':
+        color = 'green'
+        break;
+      case 'india':
+        color = 'orange'
+        break;
+      case 'china':
+        color = 'red'
+        break;
+      default:
+        color = 'white'
+    }
+
+    return color;
+  }
 
   function parseDate(dateString) {
     var format = d3.time.format("%Y-%m-%d"),
