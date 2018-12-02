@@ -1,0 +1,69 @@
+.axis {
+  fill: #000;
+  font-family: serif;
+  font-size: 12px;
+}
+
+.axis line,
+.axis path {
+  shape-rendering: crispEdges;
+  stroke-width: 1;
+  stroke: black;
+}
+
+/*
+.brush .extent {
+  fill: black;
+  fill-opacity: .1;
+}*/
+
+.chart {
+  fill: #fff;
+}
+
+.interval {
+  fill: white;
+  stroke-width: 6;
+  cursor: default;
+  pointer-events: true;
+}
+
+.instant {
+  fill: black;
+  stroke-width: 6;
+  cursor: default;
+}
+
+.instantLabel {
+  fill: black;
+  font: 16px serif;
+  shape-rendering: crispEdges;
+}
+
+.intervalLabel {
+  fill: black;
+  font: 16px serif;
+  shape-rendering: crispEdges;
+}
+
+.item {
+  cursor: default;
+  pointer-events: auto;
+}
+
+.svg {
+  background-color: #fff;
+}
+
+.tooltip {
+  background-color: #fff;
+  border: 1px solid;
+  color: black;
+  cursor: default;
+  padding: 4px;
+  pointer-events: none;
+  position: absolute;
+  shape-rendering: crispEdges;
+  visibility: hidden;
+  width: 200px;
+}
