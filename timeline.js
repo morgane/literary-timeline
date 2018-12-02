@@ -232,46 +232,43 @@ function timeline(domElement) {
   // tooltips
   //
 
-  // timeline.tooltips = function (bandName) {
-  //   var band = bands[bandName];
+  timeline.tooltips = function (bandName) {
+    var band = bands[bandName];
 
-  //   band.addActions([
-  //     ["mouseover", showTooltip],
-  //     ["mouseout", hideTooltip]
-  //   ]);
+    band.addActions([
+      ["mouseover", showTooltip],
+      ["mouseout", hideTooltip]
+    ]);
 
-  //   function getHtml(element, d) {
-  //     var html;
+    function getHtml(element, d) {
+      var title = d.label + "<br>";
+      var date = "<i>" + toYear(d.start) + "</i>" + "<br>" + "<br>";
+      var description = d.description;
 
-  //     if (element.attr("class") == "interval") {
-  //       html = d.label + "<br>" + toYear(d.start) + " - " + toYear(d.end);
-  //     } else {
-  //       html = d.label + "<br>" + toYear(d.start);
-  //     }
+      var html = title + date + description;
+      return html;
+    }
 
-  //     return html;
-  //   }
+    function showTooltip (d) {
+      var x = event.pageX < band.x + band.w / 2
+              ? event.pageX + 10
+              : event.pageX - 110,
+          y = event.pageY < band.y + band.h / 2
+              ? event.pageY + 30
+              : event.pageY - 30;
 
-  //   function showTooltip (d) {
-  //     var x = event.pageX < band.x + band.w / 2
-  //             ? event.pageX + 10
-  //             : event.pageX - 110,
-  //         y = event.pageY < band.y + band.h / 2
-  //             ? event.pageY + 30
-  //             : event.pageY - 30;
+      tooltip.html(getHtml(d3.select(this), d))
+             .style("top", y + "px")
+             .style("left", x + "px")
+             .style("visibility", "visible");
+    }
 
-  //     tooltip.html(getHtml(d3.select(this), d))
-  //            .style("top", y + "px")
-  //            .style("left", x + "px")
-  //            .style("visibility", "visible");
-  //   }
+    function hideTooltip () {
+      tooltip.style("visibility", "hidden");
+    }
 
-  //   function hideTooltip () {
-  //     tooltip.style("visibility", "hidden");
-  //   }
-
-  //   return timeline;
-  // };
+    return timeline;
+  };
 
   //----------------------------------------------------------------------
   //

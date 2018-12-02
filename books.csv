@@ -1,11 +1,12 @@
-start,label,location
-2100 BC,Epic of Gilgamesh,mesopotamia
-900 BC,I Ching,china
-800 BC,Iliad,greece
-790 BC,Odyssey,greece
-600 BC,Upanishads,india
-600 BC,Aesop's Fables,greece
-500 BC,The Art of War,china
-450 BC,Analects,china
-440 BC,Histories,greece
-400 BC,Tao Te Ching,china
+start,label,location,description
+2100 BC,Epic of Gilgamesh,mesopotamia,"The Epic of Gilgamesh is an epic poem from ancient Mesopotamia that is often regarded as the earliest surviving great work of literature."
+900 BC,I Ching,china,"The I Ching, also known as Classic of Changes or Book of Changes, is an ancient Chinese divination text and the oldest of the Chinese classics."
+800 BC,Iliad,greece,"The Iliad is an ancient Greek epic poem in dactylic hexameter, traditionally attributed to Homer. Set during the Trojan War, the ten-year siege of the city of Troy (Ilium) by a coalition of Greek states, it tells of the battles and events during the weeks of a quarrel between King Agamemnon and the warrior Achilles."
+790 BC,Odyssey,greece,"The Odyssey is one of two major ancient Greek epic poems attributed to Homer. It is, in part, a sequel to the Iliad, the other work ascribed to Homer. The Odyssey is fundamental to the modern Western canon; it is the second-oldest extant work of Western literature, while the Iliad is the oldest."
+600 BC,Upanishads,india,"The Upanishads, a part of the Vedas, are ancient Sanskrit texts that contain some of the central philosophical concepts and ideas of Hinduism, some of which are shared with religious traditions like Buddhism and Jainism. Among the most important literature in the history of Indian religions and culture, the Upanishads played an important role in the development of spiritual ideas in ancient India, marking a transition from Vedic ritualism to new ideas and institutions."
+600 BC,Aesop's Fables,greece,"Aesop's Fables, or the Aesopica, is a collection of fables credited to Aesop, a slave and storyteller believed to have lived in ancient Greece between 620 and 564 BCE."
+500 BC,The Art of War,china,"The Art of War is an ancient Chinese military treatise dating from the Spring and Autumn Period (roughly 771 to 476 BC). The work, which is attributed to the ancient Chinese military strategist Sun Tzu ("Master Sun", also spelled Sunzi), is composed of 13 chapters. Each one is devoted to a distinct aspect of warfare and how that applies to military strategy and tactics. For almost 1,500 years it was the lead text in an anthology that would be formalised as the Seven Military Classics by Emperor Shenzong of Song in 1080."
+450 BC,Analects,china,"The Analects of Confucius is a collection of sayings and ideas attributed to the Chinese philosopher Confucius and his contemporaries, traditionally believed to have been compiled and written by Confucius's followers."
+440 BC,Histories,greece,The Histories of Herodotus is considered the founding work of history in Western literature.
+400 BC,Tao Te Ching,china,"The Tao Te Ching is a Chinese classic text traditionally credited to the 6th-century BC sage Laozi. Along with the Zhuangzi, it is a fundamental text for both philosophical and religious Taoism."
+250 BC,Argonautica,greece,"The Argonautica is a Greek epic poem written by Apollonius Rhodius in the 3rd century BC. The only surviving Hellenistic epic, the Argonautica tells the myth of the voyage of Jason and the Argonauts to retrieve the Golden Fleece from remote Colchis. Their heroic adventures and Jason's relationship with the dangerous Colchian princess/sorceress Medea were already well known to Hellenistic audiences, which enabled Apollonius to go beyond a simple narrative, giving it a scholarly emphasis suitable to the times."

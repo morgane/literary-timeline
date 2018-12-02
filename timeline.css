@@ -106,7 +106,7 @@ ul {
   border: 1px solid;
   color: black;
   cursor: default;
-  padding: 4px;
+  padding: 10px;
   pointer-events: none;
   position: absolute;
   shape-rendering: crispEdges;
