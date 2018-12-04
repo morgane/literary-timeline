@@ -53,7 +53,7 @@ function timeline(domElement) {
   timeline.data = function(items) {
     var tracks = [],
         yearMillis = 31622400000,
-        instantOffset = 100 * yearMillis;
+        instantOffset = 200 * yearMillis;
     data.items = items;
 
     function compareItems(item1, item2) {
@@ -136,16 +136,16 @@ function timeline(domElement) {
                       .attr("class", function (d) { return "part instant";});
 
     var instants = d3.select("#band" + bandNum).selectAll(".instant");
-    instants.append("circle")
-            .attr("cx", band.itemHeight / 2)
-            .attr("cy", band.itemHeight / 2)
-            .attr("r", 5)
-            .style("fill", function (d) {return colorCircle(d.location);});
+    // instants.append("circle")
+    //         .attr("cx", band.itemHeight / 2)
+    //         .attr("cy", band.itemHeight / 2)
+    //         .attr("r", 5)
+    //         .style("fill", function (d) {return colorCircle(d.location);});
     instants.append("text")
             .attr("class", "instantLabel")
             .attr("x", 23)
             .attr("y", 17)
-            .text(function (d) { return d.label; });
+            .text(function (d) { return addLabelSymbol(d) });
 
     band.addActions = function(actions) {
       actions.forEach(function (action) {
@@ -312,27 +312,33 @@ function timeline(domElement) {
   // Utility functions
   //
 
-  function colorCircle(location) {
-    var color = 'white';
+  function addLabelSymbol(item) {
+    var symbol;
 
-    switch(location) {
+    switch(item.location) {
       case 'mesopotamia':
-        color = '#6FBC8D'
+        symbol = '✶'
         break;
       case 'greece':
-        color = '#51B3C1'
+        symbol = '†'
         break;
       case 'india':
-        color = '#E9B250'
+        symbol = '✺'
         break;
       case 'china':
-        color = '#EC6D78'
+        symbol = '❂'
+        break;
+      case 'rome':
+        symbol = '∴'
+        break;
+      case 'uk':
+        symbol = '❧';
         break;
       default:
-        color = 'black'
+        symbol = '';
     }
 
-    return color;
+    return symbol + " " + item.label;
   }
 
   function parseDate(dateString) {
