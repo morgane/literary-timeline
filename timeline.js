@@ -140,9 +140,7 @@ function timeline(domElement) {
             .attr("cx", band.itemHeight / 2)
             .attr("cy", band.itemHeight / 2)
             .attr("r", 5)
-            .style("stroke", 'black')
-            .style("fill", function (d) {return colorCircle(d.location);})
-            .style("stroke-width", 1);
+            .style("fill", function (d) {return colorCircle(d.location);});
     instants.append("text")
             .attr("class", "instantLabel")
             .attr("x", 23)
@@ -319,19 +317,19 @@ function timeline(domElement) {
 
     switch(location) {
       case 'mesopotamia':
-        color = 'yellow'
+        color = '#6FBC8D'
         break;
       case 'greece':
-        color = 'green'
+        color = '#51B3C1'
         break;
       case 'india':
-        color = 'orange'
+        color = '#E9B250'
         break;
       case 'china':
-        color = 'red'
+        color = '#EC6D78'
         break;
       default:
-        color = 'white'
+        color = 'black'
     }
 
     return color;
