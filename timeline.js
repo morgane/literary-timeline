@@ -320,7 +320,7 @@ function timeline(domElement) {
         symbol = '✶'
         break;
       case 'greece':
-        symbol = '†'
+        symbol = 'Ω'
         break;
       case 'india':
         symbol = '✺'
@@ -331,8 +331,17 @@ function timeline(domElement) {
       case 'rome':
         symbol = '∴'
         break;
-      case 'uk':
+      case 'middle-east':
+        symbol = '☾';
+        break;
+      case 'japan':
+        symbol = '日';
+        break;
+      case 'france':
         symbol = '❧';
+        break;
+      case 'uk':
+        symbol = '†';
         break;
       default:
         symbol = '';
